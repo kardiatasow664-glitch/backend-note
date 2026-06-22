@@ -3,13 +3,15 @@ const Question = require("../models/question.model");
 // Ajouter une question
 const createQuestion = async (req, res) => {
   try {
-    const { titre, description, auteur, categorie } = req.body;
+    const { titre, description, tags, auteur, userId } = req.body;
 
-    const question = await Question.create({
-      titre,
-      description,
-      categorie,
-    });
+const question = await Question.create({
+  titre,
+  description,
+  tags,
+  auteur,
+  userId,
+});
 
     res.status(201).json({
       success: true,

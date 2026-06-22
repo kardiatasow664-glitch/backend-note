@@ -11,19 +11,40 @@ const questionSchema = new mongoose.Schema(
       type: String,
       required: [true, "La description est obligatoire"],
     },
-    categorie: {
-      type: String,
-      required: [true, "La catégorie est obligatoire"],
-    },
-    // optionnel (tu l’as dans le body mais tu ne l’utilises pas encore)
+
+    // ❌ on remplace categorie par tags (plus moderne)
+    tags: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
+
     auteur: {
       type: String,
+      default: "Anonyme",
     },
+
+    // ✅ nouveaux champs
+    votes: {
+      type: Number,
+      default: 0,
+    },
+
+    reponsesCount: {
+      type: Number,
+      default: 0,
+    },
+
+    userId: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User",
+  //  required: true,
+},
   },
   {
-    timestamps: true, // ajoute createdAt et updatedAt
+    timestamps: true,
   }
 );
 
-// ✅ IMPORTANT : export du modèle mongoose
 module.exports = mongoose.model("Question", questionSchema);
