@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db')
 const userRoute = require('./routes/user.route')
 const questionRoute = require('./routes/question.route');
+const answerRoute = require('./routes/answer.route');
+
 const cors = require('cors')
 // import express from 'express'
 
@@ -28,6 +30,8 @@ app.listen(PORT ,() =>{
 app.use('/api/auth' , userRoute);
 //------------route pour les questions---------------
 app.use('/api/question' , questionRoute);
+app.use('/api/answer' , answerRoute);
+
 app.get('/', (req , res) =>{
     res.send('Bienevenue sur mon serveur express')
 } );
