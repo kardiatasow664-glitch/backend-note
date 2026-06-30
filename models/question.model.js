@@ -25,7 +25,7 @@ const questionSchema = new mongoose.Schema(
       default: "Anonyme",
     },
 
-    // ✅ nouveaux champs
+    //  nouveaux champs
     votes: {
       type: Number,
       default: 0,
